@@ -86,5 +86,5 @@ th {
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #f2f2f2; /* Agrega un color de fondo a las filas impares para mejorar la legibilidad */
+    background-color: #f2f2f2; 
 }
