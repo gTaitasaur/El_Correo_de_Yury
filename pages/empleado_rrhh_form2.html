@@ -23,73 +23,77 @@
     </nav>
 
     <div class="form-container">
-        <h2>CONTACTOS DE EMERGENCIA</h2>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="contacto-nombres">Nombres</label>
-                <input type="text" id="contacto-nombres" name="contacto-nombres">
+        <form id="form-datos-laborales" method="post">
+            <h2>CONTACTOS DE EMERGENCIA</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="contacto-nombres">Nombres</label>
+                    <input type="text" id="contacto-nombres" name="contacto-nombres">
+                </div>
+                <div class="form-group">
+                    <label for="contacto-apellidos">Apellidos</label>
+                    <input type="text" id="contacto-apellidos" name="contacto-apellidos">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="contacto-apellidos">Apellidos</label>
-                <input type="text" id="contacto-apellidos" name="contacto-apellidos">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="relacion">Relación</label>
+                    <input type="text" id="relacion" name="relacion">
+                </div>
+                <div class="form-group">
+                    <label for="contacto-telefono">Teléfono</label>
+                    <input type="tel" id="contacto-telefono" name="contacto-telefono">
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="relacion">Relación</label>
-                <input type="text" id="relacion" name="relacion">
+            <div class="form-row">
+                <button id="btn-agregar-uno" type="button" class="secondary-button">+ Agregar</button>
             </div>
-            <div class="form-group">
-                <label for="contacto-telefono">Teléfono</label>
-                <input type="tel" id="contacto-telefono" name="contacto-telefono">
+        
+            <h2>CARGAS FAMILIARES</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="carga-nombres">Nombres</label>
+                    <input type="text" id="carga-nombres" name="carga-nombres">
+                </div>
+                <div class="form-group">
+                    <label for="carga-apellidos">Apellidos</label>
+                    <input type="text" id="carga-apellidos" name="carga-apellidos">
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <button type="button" class="secondary-button">+ Agregar</button>
-        </div>
-    
-        <h2>CARGAS FAMILIARES</h2>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="carga-nombres">Nombres</label>
-                <input type="text" id="carga-nombres" name="carga-nombres">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Sexo</label>
+                    <label class="radio-inline"><input type="radio" name="carga-sexo" value="Femenino"> Femenino</label>
+                    <label class="radio-inline"><input type="radio" name="carga-sexo" value="Masculino"> Masculino</label>
+                </div>
+                <div class="form-group">
+                    <label for="carga-rut">Rut</label>
+                    <input type="text" id="carga-rut" name="carga-rut">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="carga-apellidos">Apellidos</label>
-                <input type="text" id="carga-apellidos" name="carga-apellidos">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="parentesco">Parentesco</label>
+                    <input type="text" id="parentesco" name="parentesco">
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group">
-                <label>Sexo</label>
-                <label class="radio-inline"><input type="radio" name="carga-sexo" value="Femenino"> Femenino</label>
-                <label class="radio-inline"><input type="radio" name="carga-sexo" value="Masculino"> Masculino</label>
+            <div class="form-row">
+                <button id="btn-agregar-dos" type="button" class="secondary-button">+ Agregar</button>
             </div>
-            <div class="form-group">
-                <label for="carga-rut">Rut</label>
-                <input type="text" id="carga-rut" name="carga-rut">
+        
+            <div class="form-row">
+                <button type="submit" class="primary-button" id="btn-save">Registrar</button>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="parentesco">Parentesco</label>
-                <input type="text" id="parentesco" name="parentesco">
-            </div>
-        </div>
-        <div class="form-row">
-            <button type="button" class="secondary-button">+ Agregar</button>
-        </div>
-    
-        <div class="form-row">
-            <button type="submit" class="primary-button">Registrar</button>
-        </div>
+        </form>
     </div>
-    </main>
-
+</main>
+    
     <footer>
         <p>© 2023 El Correo de Yury - Todos los derechos reservados</p>
     </footer>
 
-    <script type="module" src="../seguridad/firebaseConfig.js"></script>
+
+
+    <script type="module" src="../formulario.js"></script>
 </body>
 </html>
