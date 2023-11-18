@@ -1,29 +1,86 @@
 import { registrarDatos } from './seguridad/firebaseConfig.js';
 
+// Variable para almacenar temporalmente los datos de contactos y cargas familiares
+let contactosTemp = [];
+let cargasTemp = [];
+
 window.addEventListener('DOMContentLoaded', () => {
     // Mostrar datos de Firestore si es necesario
 });
 
+// Recibe los datos del formulario
+const formDatos = document.getElementById('form');
 
-// Recibe los datos del formulario de datos personales
-const formDatosPersonales = document.getElementById('form-datos-personales');
-const formDatosLaborales = document.getElementById('form-datos-laborales');
+// Función para agregar contactos temporales
+const agregarContactoTemp = () => {
+    const contactoNombres = formDatos.querySelector('#contacto-nombres').value;
+    const contactoApellidos = formDatos.querySelector('#contacto-apellidos').value;
+    const relacion = formDatos.querySelector('#relacion').value;
+    const contactoTelefono = formDatos.querySelector('#contacto-telefono').value;
 
+    contactosTemp.push({
+        nombres: contactoNombres,
+        apellidos: contactoApellidos,
+        relacion,
+        telefono: contactoTelefono,
+    });
 
-formDatosPersonales.addEventListener('submit', (e) => {
+    // Limpiar campos después de agregar
+    formDatos.querySelector('#contacto-nombres').value = '';
+    formDatos.querySelector('#contacto-apellidos').value = '';
+    formDatos.querySelector('#relacion').value = '';
+    formDatos.querySelector('#contacto-telefono').value = '';
+};
+
+// Función para agregar cargas familiares temporales
+const agregarCargaTemp = () => {
+    const cargasNombres = formDatos.querySelector('#carga-nombres').value;
+    const cargasApellidos = formDatos.querySelector('#carga-apellidos').value;
+    const cargasSexo = formDatos.querySelector('input[name="carga-sexo"]:checked').value;
+    const cargasRut = formDatos.querySelector('#carga-rut').value;
+    const parentesco = formDatos.querySelector('#parentesco').value;
+
+    cargasTemp.push({
+        nombres: cargasNombres,
+        apellidos: cargasApellidos,
+        sexo: cargasSexo,
+        rut: cargasRut,
+        parentesco,
+    });
+
+    // Limpiar campos después de agregar
+    formDatos.querySelector('#carga-nombres').value = '';
+    formDatos.querySelector('#carga-apellidos').value = '';
+    formDatos.querySelector('input[name="carga-sexo"]:checked').checked = false;
+    formDatos.querySelector('#carga-rut').value = '';
+    formDatos.querySelector('#parentesco').value = '';
+};
+
+// Evento para agregar contactos temporales
+formDatos.querySelector('#btn-agregar-uno').addEventListener('click', () => {
+    agregarContactoTemp();
+});
+
+// Evento para agregar cargas familiares temporales
+formDatos.querySelector('#btn-agregar-dos').addEventListener('click', () => {
+    agregarCargaTemp();
+});
+
+// Evento para registrar los datos finales
+formDatos.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Recolecta los datos del formulario de datos personales
-    const nombres = formDatosPersonales.querySelector('#nombres').value;
-    const apellidos = formDatosPersonales.querySelector('#apellidos').value;
-    const sexo = formDatosPersonales.querySelector('input[name="sexo"]:checked').value;
-    const rut = formDatosPersonales.querySelector('#rut').value;
-    const direccion = formDatosPersonales.querySelector('#direccion').value;
-    const telefono = formDatosPersonales.querySelector('#telefono').value;
-    const cargo = formDatosPersonales.querySelector('#cargo').value;
-    const fechaIngreso = formDatosPersonales.querySelector('#fecha-ingreso').value;
-    const area = formDatosPersonales.querySelector('#area').value;
-    const departamento = formDatosPersonales.querySelector('#departamento').value;
+    // Recolecta los datos personales del formulario
+    const nombres = formDatos.querySelector('#nombres').value;
+    const apellidos = formDatos.querySelector('#apellidos').value;
+    const sexo = formDatos.querySelector('input[name="sexo"]:checked').value;
+    const rut = formDatos.querySelector('#rut').value;
+    const direccion = formDatos.querySelector('#direccion').value;
+    const telefono = formDatos.querySelector('#telefono').value;
+    const cargo = formDatos.querySelector('#cargo').value;
+    const fechaIngreso = formDatos.querySelector('#fecha-ingreso').value;
+    const area = formDatos.querySelector('#area').value;
+    const departamento = formDatos.querySelector('#departamento').value;
 
     // Objeto con datos personales
     const datosPersonales = {
@@ -39,53 +96,12 @@ formDatosPersonales.addEventListener('submit', (e) => {
         departamento,
     };
 
-    // Llama a la función para registrar los datos en Firestore
-    registrarDatos(datosPersonales);
-});
-
-formDatosLaborales.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Recolecta los datos del formulario de datos laborales
-    const contactoNombres = formDatosLaborales.querySelector('#contacto-nombres').value;
-    const contactoApellidos = formDatosLaborales.querySelector('#contacto-apellidos').value;
-    const relacion = formDatosLaborales.querySelector('#relacion').value;
-    const contactoTelefono = formDatosLaborales.querySelector('#contacto-telefono').value;
-
-    const cargasNombres = formDatosLaborales.querySelector('#carga-nombres').value;
-    const cargasApellidos = formDatosLaborales.querySelector('#carga-apellidos').value;
-    const cargasSexo = formDatosLaborales.querySelector('input[name="carga-sexo"]:checked').value;
-    const cargasRut = formDatosLaborales.querySelector('#carga-rut').value;
-    const parentesco = formDatosLaborales.querySelector('#parentesco').value;
-
-    // Objeto con datos laborales
-    const datosLaborales = {
-        contactos: [
-            {
-                nombres: contactoNombres,
-                apellidos: contactoApellidos,
-                relacion,
-                telefono: contactoTelefono,
-            },
-        ],
-        
-        cargas: [
-            {
-                nombres: cargasNombres,
-                apellidos: cargasApellidos,
-                sexo: cargasSexo,
-                rut: cargasRut,
-                parentesco,
-            },
-            // Puedes agregar más objetos si hay múltiples cargas familiares
-        ],
+    // Objeto con contactos de emergencia y cargas familiares
+    const empContactosCargas = {
+        contactos: contactosTemp,
+        cargas: cargasTemp,
     };
 
-    // Llama a la función para registrar los datos en Firestore
-    registrarDatos(datosLaborales);
+    // Registrar datos en Firestore
+    registrarDatos(datosPersonales, empContactosCargas);
 });
-
-
-
-
-
