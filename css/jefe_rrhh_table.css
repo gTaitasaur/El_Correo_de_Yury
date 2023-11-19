@@ -31,6 +31,7 @@ h1 {
 /* NavBar */
 .navbar-custom {
     background-color: #4A90E2;
+    border-radius: 2vh;
 }
 
 .navbar-custom .navbar-brand,
