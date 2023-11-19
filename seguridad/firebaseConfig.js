@@ -22,7 +22,18 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore();
 
-//registrar datos
-export const registrarDatos = (datos) => {
-    addDoc(collection(db, 'empleados',), datos);
-}
+
+
+// Función para registrar solo datos personales
+export const registrarDatos = async (datosPersonales) => {
+  try {
+    // Almacenar datos personales en la colección 'empleados'
+    const datosPersonalesRef = collection(db, 'empleados');
+    await addDoc(datosPersonalesRef, datosPersonales);
+
+    return true; // Indicar que la operación fue exitosa
+  } catch (error) {
+    console.error('Error al registrar datos:', error);
+    throw error; // Lanzar el error para manejarlo en el código que hace la llamada
+  }
+};

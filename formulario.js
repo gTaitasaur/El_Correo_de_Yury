@@ -21,7 +21,7 @@ const agregarContactoTemp = () => {
     contactosTemp.push({
         nombres: contactoNombres,
         apellidos: contactoApellidos,
-        relacion,
+        relacion: relacion,
         telefono: contactoTelefono,
     });
 
@@ -45,7 +45,7 @@ const agregarCargaTemp = () => {
         apellidos: cargasApellidos,
         sexo: cargasSexo,
         rut: cargasRut,
-        parentesco,
+        parentesco: parentesco, // Corregido el nombre del campo
     });
 
     // Limpiar campos después de agregar
@@ -67,7 +67,7 @@ formDatos.querySelector('#btn-agregar-dos').addEventListener('click', () => {
 });
 
 // Evento para registrar los datos finales
-formDatos.addEventListener('submit', (e) => {
+formDatos.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // Recolecta los datos personales del formulario
@@ -82,7 +82,7 @@ formDatos.addEventListener('submit', (e) => {
     const area = formDatos.querySelector('#area').value;
     const departamento = formDatos.querySelector('#departamento').value;
 
-    // Objeto con datos personales
+    // Objeto con datos personales, contactos de emergencia y cargas familiares
     const datosPersonales = {
         nombres,
         apellidos,
@@ -94,14 +94,19 @@ formDatos.addEventListener('submit', (e) => {
         fechaIngreso,
         area,
         departamento,
-    };
-
-    // Objeto con contactos de emergencia y cargas familiares
-    const empContactosCargas = {
+        // Agregar los arreglos directamente aquí
         contactos: contactosTemp,
         cargas: cargasTemp,
     };
 
     // Registrar datos en Firestore
-    registrarDatos(datosPersonales, empContactosCargas);
+    try {
+        await registrarDatos(datosPersonales);
+        
+        // Limpiar campos del formulario
+        //formDatos.reset();
+    } catch (error) {
+        console.error('Error al registrar datos:', error);
+        // Manejar el error según sea necesario
+    }
 });
