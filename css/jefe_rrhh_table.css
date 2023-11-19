@@ -5,16 +5,38 @@ body {
     padding: 20px;
 }
 
-header, footer {
-    background-color: #3A70C2;
-    color: white;
-    padding: 1em;
-    text-align: center;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F7FA;
+    margin: 0;
+    padding: 20px;
 }
 
-header img {
-    width: 100px;
+ /* Header */
+ 
+.logo {
+    width: auto;
+    height: 70px;
 }
+
+@media (max-width: 768px) {
+    .logo {
+        height: 40px;
+    }
+}
+
+header {
+    background-color: #F5F7FA;
+    color: #4F4F4F;
+}
+
+h1 {
+    color: #4A90E2;
+    font-size: 1.5rem;
+}
+
+
+/* NavBar */
 
 nav ul {
     list-style-type: none;
