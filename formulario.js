@@ -4,14 +4,10 @@ import { registrarDatos } from './seguridad/firebaseConfig.js';
 let contactosTemp = [];
 let cargasTemp = [];
 
-window.addEventListener('DOMContentLoaded', () => {
-    // Mostrar datos de Firestore si es necesario
-});
-
 // Recibe los datos del formulario
 const formDatos = document.getElementById('form');
 
-// Función para agregar contactos temporales
+// agregar contactos de emergencia
 const agregarContactoTemp = () => {
     const contactoNombres = formDatos.querySelector('#contacto-nombres').value;
     const contactoApellidos = formDatos.querySelector('#contacto-apellidos').value;
@@ -25,14 +21,14 @@ const agregarContactoTemp = () => {
         telefono: contactoTelefono,
     });
 
-    // Limpiar campos después de agregar
+    // Limpiar campos
     formDatos.querySelector('#contacto-nombres').value = '';
     formDatos.querySelector('#contacto-apellidos').value = '';
     formDatos.querySelector('#relacion').value = '';
     formDatos.querySelector('#contacto-telefono').value = '';
 };
 
-// Función para agregar cargas familiares temporales
+// agregar cargas familiares temporales
 const agregarCargaTemp = () => {
     const cargasNombres = formDatos.querySelector('#carga-nombres').value;
     const cargasApellidos = formDatos.querySelector('#carga-apellidos').value;
@@ -48,7 +44,7 @@ const agregarCargaTemp = () => {
         parentesco: parentesco, // Corregido el nombre del campo
     });
 
-    // Limpiar campos después de agregar
+    // Limpiar campos
     formDatos.querySelector('#carga-nombres').value = '';
     formDatos.querySelector('#carga-apellidos').value = '';
     formDatos.querySelector('input[name="carga-sexo"]:checked').checked = false;
@@ -56,17 +52,17 @@ const agregarCargaTemp = () => {
     formDatos.querySelector('#parentesco').value = '';
 };
 
-// Evento para agregar contactos temporales
+// Evento para agregar contactos de emergencia
 formDatos.querySelector('#btn-agregar-uno').addEventListener('click', () => {
     agregarContactoTemp();
 });
 
-// Evento para agregar cargas familiares temporales
+// Evento para agregar cargas familiares
 formDatos.querySelector('#btn-agregar-dos').addEventListener('click', () => {
     agregarCargaTemp();
 });
 
-// Evento para registrar los datos finales
+// Evento para registrar los datos en firestore
 formDatos.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -94,7 +90,6 @@ formDatos.addEventListener('submit', async (e) => {
         fechaIngreso,
         area,
         departamento,
-        // Agregar los arreglos directamente aquí
         contactos: contactosTemp,
         cargas: cargasTemp,
     };
@@ -102,11 +97,10 @@ formDatos.addEventListener('submit', async (e) => {
     // Registrar datos en Firestore
     try {
         await registrarDatos(datosPersonales);
-        
-        // Limpiar campos del formulario
+
+        // Limpiar campos
         //formDatos.reset();
     } catch (error) {
         console.error('Error al registrar datos:', error);
-        // Manejar el error según sea necesario
     }
 });

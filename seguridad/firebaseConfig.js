@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
-import {getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import {getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,17 +23,16 @@ const analytics = getAnalytics(app);
 const db = getFirestore();
 
 
-
-// Función para registrar solo datos personales
+// registrar datos personales
 export const registrarDatos = async (datosPersonales) => {
-  try {
-    // Almacenar datos personales en la colección 'empleados'
-    const datosPersonalesRef = collection(db, 'empleados');
-    await addDoc(datosPersonalesRef, datosPersonales);
+  // almacenar en coleccion empleados
+  const datosPersonalesRef = collection(db, 'empleados');
+  await addDoc(datosPersonalesRef, datosPersonales);
 
-    return true; // Indicar que la operación fue exitosa
-  } catch (error) {
-    console.error('Error al registrar datos:', error);
-    throw error; // Lanzar el error para manejarlo en el código que hace la llamada
-  }
+};
+
+//obtener datos de firestore
+export const obtenerDatos = async () => {
+  const querySnapshot = await getDocs(collection(db, 'empleados'));
+  return querySnapshot.docs.map((doc) => doc.data());
 };
