@@ -5,15 +5,7 @@ body {
     padding: 20px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #F5F7FA;
-    margin: 0;
-    padding: 20px;
-}
-
  /* Header */
- 
 .logo {
     width: auto;
     height: 70px;
@@ -37,24 +29,29 @@ h1 {
 
 
 /* NavBar */
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #4F4F4F;
+.navbar-custom {
+    background-color: #4A90E2;
 }
 
-nav ul li {
-    padding: 1em;
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #F5F7FA;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
+.navbar-custom .nav-link:hover {
+    color: #4F4F4F;
 }
 
+.navbar-custom .navbar-toggler {
+    border-color: #F5F7FA;
+}
+
+.navbar-custom .navbar-collapse {
+    background-color: #4A90E2;
+}
+
+
+/* MAIN - BODY */
 .filter-bar {
     background-color: #f4f4f4;
     padding: 20px;
@@ -109,4 +106,22 @@ th {
 
 tbody tr:nth-child(odd) {
     background-color: #f2f2f2; 
+}
+
+/* FOOTER */
+
+.footer {
+    background-color: #4A90E2;
+    color: #F5F7FA;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.footer .text-muted {
+    margin: 0;
 }

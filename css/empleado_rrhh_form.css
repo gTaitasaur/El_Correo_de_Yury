@@ -28,33 +28,29 @@ h1 {
     font-size: 1.5rem;
 }
 
-main {
-    padding: 2em;
-    width: 90%;
-    max-width: 800px;
-    margin: auto;
-}
-
 /* NavBar */
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    background-color: #4F4F4F;
+.navbar-custom {
+    background-color: #4A90E2;
 }
 
-nav ul li {
-    padding: 1em;
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #F5F7FA;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
+.navbar-custom .nav-link:hover {
+    color: #4F4F4F;
 }
 
+.navbar-custom .navbar-toggler {
+    border-color: #F5F7FA;
+}
 
+.navbar-custom .navbar-collapse {
+    background-color: #4A90E2;
+}
+
+/* MAIN - BODY */
 .form-container {
     background-color: #ffffff;
     padding: 50px;
@@ -98,10 +94,6 @@ h2 {
     border-color: #3A70C2;
 }
 
-footer p {
-    margin: 0;
-}
-
 .secondary-button {
     background-color: #E1ECF4;
     color: #3A70C2;
@@ -140,4 +132,22 @@ footer p {
 
 .radio-inline input[type='radio'] {
     margin-right: 5px;
+}
+
+/* FOOTER */
+
+.footer {
+    background-color: #4A90E2;
+    color: #F5F7FA;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.footer .text-muted {
+    margin: 0;
 }
