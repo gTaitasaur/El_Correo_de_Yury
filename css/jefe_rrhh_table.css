@@ -53,6 +53,10 @@ h1 {
 
 
 /* MAIN - BODY */
+main {
+    margin-top: 20px;
+}
+
 .filter-bar {
     background-color: #f4f4f4;
     padding: 20px;

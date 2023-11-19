@@ -54,6 +54,10 @@ h1 {
 
 
 /* MAIN - BODY */
+main {
+    margin-top: 20px;
+}
+
 .table-container {
     width: 90%;
     overflow-x: auto;
