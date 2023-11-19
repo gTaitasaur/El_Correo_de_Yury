@@ -34,31 +34,31 @@
                 <div class="row mb-3">
                     <div class="col">
                         <label for="nombres" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="nombres" placeholder="Juan Carlos" readonly>
+                        <input type="text" class="form-control" id="dpNombres" placeholder="Juan Carlos" readonly>
                     </div>
                     <div class="col">
                         <label for="apellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos" placeholder="Bodoque" readonly>
+                        <input type="text" class="form-control" id="dpApellidos" placeholder="Bodoque" readonly>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
                         <label for="rut" class="form-label">RUT</label>
-                        <input type="text" class="form-control" id="rut" placeholder="123.456.789-0" readonly>
+                        <input type="text" class="form-control" id="dpRut" placeholder="123.456.789-0" readonly>
                     </div>
                     <div class="col">
                         <label for="rut" class="form-label">Sexo</label>
-                        <input type="text" class="form-control" id="sexo" placeholder="Sexo" readonly>
+                        <input type="text" class="form-control" id="dpSexo" placeholder="Sexo" readonly>
                     </div>
                     
                 </div>
                 <div class="mb-3">
                     <label for="direccion" class="form-label">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" placeholder="Dirección">
+                    <input type="text" class="form-control" id="dpDireccion" placeholder="Dirección">
                 </div>
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Teléfono</label>
-                    <input type="tel" class="form-control" id="telefono" placeholder="Teléfono">
+                    <input type="tel" class="form-control" id="dpTelefono" placeholder="Teléfono">
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
@@ -77,23 +77,30 @@
                         <th scope="col">Editar</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" class="form-control" value="George "></td>
-                        <td><input type="text" class="form-control" value="Kusunoki Miller"></td>
-                        <td><input type="text" class="form-control" value="Hermano"></td>
-                        <td><input type="tel" class="form-control" value="+56987654321"></td>
-                        <td>
-                            <button class="btn btn-primary btn-sm me-1">Guardar</button>
-                            <button class="btn btn-danger btn-sm">Eliminar</button>
-                        </td>
-                    </tr>
+                <tbody id="empleadoTablaEmergencia">
+                    <!-- Aquí van los datos llamados de Firabase -->
                 </tbody>
             </table>
         </div>
 
     <!-- CARGAS FAMILIARES -->
-        
+    <div class="container mt-5">
+        <h2>Carga Familiar</h2>
+        <table class="table">
+            <thead id="empleadoTablaCarga">
+                <tr>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Parentesco</th>
+                    <th scope="col">Rut</th>
+                    <th scope="col">Editar</th>
+                </tr>
+            </thead>
+            <tbody id="empleadoTablaCarga">
+                <!-- Aquí van los datos llamados de Firabase -->
+            </tbody>
+        </table>
+    </div>
     </main>
 
     <footer>
