@@ -1,7 +1,11 @@
-// Import the functions you need from the SDKs you need
+//firebaseConfig.js
+
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
-import {getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, where } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,6 +27,7 @@ const analytics = getAnalytics(app);
 const db = getFirestore();
 
 
+
 // registrar datos personales
 export const registrarDatos = async (datosPersonales) => {
   // almacenar en coleccion empleados
@@ -35,4 +40,22 @@ export const registrarDatos = async (datosPersonales) => {
 export const obtenerDatos = async () => {
   const querySnapshot = await getDocs(collection(db, 'empleados'));
   return querySnapshot.docs.map((doc) => doc.data());
+};
+
+
+// Obtener la instancia de autenticación de Firebase
+export const auth = getAuth();
+
+// Función para autenticar con correo y contraseña
+export const signInWithEmailAndPassword = async (email, password) => {
+  return await signInWithEmailAndPassword(auth, email, password);
+};
+
+// Función para obtener datos de usuario desde Firestore
+export const obtenerDatosUsuario = async (email) => {
+  const querySnapshot = await getDocs(collection(db, 'empleados'), where('correo', '==', email));
+  if (querySnapshot.docs.length > 0) {
+    return querySnapshot.docs[0].data();
+  }
+  return null;
 };
