@@ -1,4 +1,4 @@
-import { obtenerDatos } from "./seguridad/firebaseConfig.js";
+import { obtenerDatos } from "../seguridad/firebaseConfig.js";
 
 // Mostrar datos almacenados en Firestore
 window.addEventListener('DOMContentLoaded', async () => {

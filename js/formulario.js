@@ -1,4 +1,4 @@
-import { registrarDatos } from './seguridad/firebaseConfig.js';
+import { registrarDatos } from '../seguridad/firebaseConfig';
 
 // Variable para almacenar temporalmente los datos de contactos y cargas familiares
 let contactosTemp = [];

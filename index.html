@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Correo de Yury</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
     <div class="login-container">
@@ -19,13 +19,13 @@
                 <input type="password" id="password" name="password" required>
             </div>
             <div class="action-buttons">
-                <button type="button" onclick="login()">Ingresar</button>
+                <button type="button" id="login-button">Ingresar</button>
                 <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
             </div>
         </form>
     </div>
 
     <script type="module" src="./seguridad/firebaseConfig.js"></script>
-    <script type="module" src="login.js"></script>
+    <script type="module" src="./js/loginLogout/login.js"></script>
 </body>
 </html>

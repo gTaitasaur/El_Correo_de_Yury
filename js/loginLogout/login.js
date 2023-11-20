@@ -1,7 +1,13 @@
 // login.js
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('login-button').addEventListener('click', login);
+});
+
 // Importar funciones necesarias desde firebaseConfig.js
-import { signInWithEmailAndPassword } from './seguridad/firebaseConfig.js';
+import { signInWithEmailAndPassword } from '../../seguridad/firebaseConfig.js';
+import { obtenerDatosUsuario } from '../../seguridad/firebaseConfig.js';
+
 
 // Definir la función login
 export async function login() {
@@ -20,15 +26,15 @@ export async function login() {
         if (userData && userData.cargo) {
             switch (userData.cargo.toLowerCase()) {
                 case "jefe de rr.hh":
-                    //window.location.href = "/jefe_rrhh_perfil.html";
+                    window.location.href = "../../pages/jefe_rrhh_table.html";
                     console.log('inicio exitoso como Jefe de RR.HH');
                     break;
                 case "empleado de la empresa":
-                    //window.location.href = "/empleado.html";
+                    window.location.href = "../../pages/empleado_rrhh_form.html";
                     console.log('inicio exitoso como Empleado de la empresa');
                     break;
                 case "empleado de rr.hh":
-                    //window.location.href = "/empleado_rrhh_form.html";
+                    window.location.href = "../../pages/empleado.html";
                     console.log('inicio exitoso como Empleado de RR.HH');
                     break;
                 default:
