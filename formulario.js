@@ -73,10 +73,11 @@ formDatos.addEventListener('submit', async (e) => {
     const rut = formDatos.querySelector('#rut').value;
     const direccion = formDatos.querySelector('#direccion').value;
     const telefono = formDatos.querySelector('#telefono').value;
-    const cargo = formDatos.querySelector('#cargo').value;
+    const cargo = formDatos.querySelector('input[name="user"]:checked').value;
     const fechaIngreso = formDatos.querySelector('#fecha-ingreso').value;
     const area = formDatos.querySelector('#area').value;
     const departamento = formDatos.querySelector('#departamento').value;
+    const email = formDatos.querySelector('#email').value;
 
     // Objeto con datos personales, contactos de emergencia y cargas familiares
     const datosPersonales = {
@@ -90,6 +91,7 @@ formDatos.addEventListener('submit', async (e) => {
         fechaIngreso,
         area,
         departamento,
+        email,
         contactos: contactosTemp,
         cargas: cargasTemp,
     };
